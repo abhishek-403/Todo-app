@@ -1,35 +1,38 @@
 import React from 'react';
 import './App.css';
-import AllTasks from './components/AllTasks';
-import AppBar from './components/AppBar';
-import NavBar from './components/NavBar';
+import { Routes, Route } from 'react-router-dom'
+import RequireUser from './components/RequireUser';
+import NotLoggedIn from './components/NotLoggedIn';
+import Home from './pages/Home/Home';
+import { KEY_ACCESS_TOKEN, setItem } from './loacalStorageManager';
+import NotFound from './pages/NotFound/NotFound';
+import AddNote from './components/AddNote/AddNote';
+import Navbar from './components/navbar/Navbar.js';
 
-import AllMovies from './components/movie cat/AllMovies';
-
-
-import './components/style.css'
 
 function App() {
-  return (
-    <>
-     
-
-
-      <NavBar/>
-
-      <div id="all-content">
-
-
-        <AppBar/>
-        <AllTasks/>
-      </div>
-    
+  setItem(KEY_ACCESS_TOKEN, "xyx")
+  return (<>
+  <Navbar/>
+    <Routes>
+      <Route element={<RequireUser />}>
+        <Route path='/' element={<Home />} />
+        <Route path='/note' element={<AddNote />} />
 
 
 
+      </Route>
 
-    </>
-    
+      <Route element={<NotLoggedIn />} >
+
+      </Route>
+
+
+      <Route path='*' element={<NotFound />} />
+    </Routes>
+
+  </>
+
   )
 }
 

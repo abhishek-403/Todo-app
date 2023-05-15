@@ -1,0 +1,85 @@
+.addnote{
+    position: fixed;
+    z-index: 100;
+    background-color: rgba(0, 0, 0, 0.382);
+    height: 100vh;
+    width: 100vw;
+    
+    
+    .content{
+        border-radius: 20px;
+        margin: var(--mt2) auto;
+        background-color: black;
+        
+        width: 60%;
+
+        padding: 20px 10px;
+        display: grid;
+        grid-template-columns: auto;
+        grid-template-rows:.8fr 4fr;
+
+        gap: 15px;
+
+
+        #cross{
+            color: white;
+            position: absolute;
+            right:20px;
+            top: 10px;
+            cursor: pointer;
+
+            &:hover{
+                color: rgb(255, 0, 0);
+            }
+
+        }
+        label{
+            font-size: var(--h6-font-size);
+            font-family: var(--h1-font);
+            color: white;
+        }
+        input,textarea {
+            padding: 15px;
+            font-size: var(--p-font-size);
+            font-family: var(--p-font);
+                
+            resize: none;
+            border: none;
+            outline: none;
+            background-color: var(--prim-input-col);
+            font-family: var(--para-font);
+
+            color: var(--text-light-col);
+            font-size: var(--p-font-size);
+            width: 100%;
+            border-radius: 10px;
+          }
+        .heading{
+            gap: 5px;
+            width:90%;
+            input{
+                height: 40px;
+                
+            }
+            
+            margin: 0px auto;
+            
+        }
+        
+        .desc{
+            width:90%;
+            margin: 0px auto;
+            gap:5px;
+            
+            
+
+        }
+
+        .buttons{
+            width: 100%;
+            gap: 10px;
+
+        }
+
+    }
+}
