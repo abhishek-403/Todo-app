@@ -1,8 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
-import notesReducer from "./slices/NotesSlice";
+import appConfigReducer from "./slices/appConfigSlice";
+import toastReducer from "./slices/toastSlice";
 
 export default configureStore({
     reducer:{
-         notesReducer,
+         appConfigReducer,
+         toastReducer
     }
 })

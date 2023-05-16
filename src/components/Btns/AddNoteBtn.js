@@ -1,22 +1,22 @@
 import React from 'react'
 
-function Buttons(props) {
+function AddNoteBtn() {
     const style = {
-        backgroundColor: `${props.col}`,
+        backgroundColor: `var(--sec-col)`,
         borderRadius: "30px",
         color:"white"
 
 
     }
     return (
-        <div  className="">
+        <div>
 
 
             <div style={style} className="btn btn-add">
-                {props.value} {props.icon}
+                Add <i className="uil2 uil-check-circle"></i>
             </div>
         </div>
     )
 }
 
-export default Buttons
+export default AddNoteBtn

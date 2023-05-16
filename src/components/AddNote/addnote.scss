@@ -1,5 +1,7 @@
 .addnote{
     position: fixed;
+    top: var(--nav-ht);
+    left: 0;
     z-index: 100;
     background-color: rgba(0, 0, 0, 0.382);
     height: 100vh;
