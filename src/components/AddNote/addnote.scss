@@ -1,87 +1,112 @@
-.addnote{
-    position: fixed;
-    top: var(--nav-ht);
-    left: 0;
-    z-index: 100;
-    background-color: rgba(0, 0, 0, 0.382);
-    height: 100vh;
-    width: 100vw;
-    
-    
-    .content{
-        border-radius: 20px;
-        margin: var(--mt2) auto;
-        background-color: black;
-        
-        width: 60%;
+.addnote {
+  position: fixed;
+  top: var(--nav-ht);
+  left: 0;
+  z-index: 100;
+  background-color: rgba(0, 0, 0, 0.607);
+  height: 100vh;
+  width: 100vw;
 
-        padding: 20px 10px;
-        display: grid;
-        grid-template-columns: auto;
-        grid-template-rows:.8fr 4fr;
+  .content {
+    border-radius: 20px;
+    margin: var(--mt2) auto;
+    background-image: linear-gradient(
+      to right in oklch,
+      rgb(255, 194, 241),
+      rgb(165, 183, 255)
+    );
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 770px;
+    width: 60%;
+    padding: 20px 10px;
 
-        gap: 15px;
+    gap: 25px;
 
+    #cross {
+      color: rgb(0, 0, 0);
+      position: absolute;
+      right: 20px;
+      top: 10px;
+      cursor: pointer;
 
-        #cross{
-            color: white;
-            position: absolute;
-            right:20px;
-            top: 10px;
-            cursor: pointer;
-
-            &:hover{
-                color: rgb(255, 0, 0);
-            }
-
-        }
-        label{
-            font-size: var(--h6-font-size);
-            font-family: var(--h1-font);
-            color: white;
-        }
-        input,textarea {
-            padding: 15px;
-            font-size: var(--p-font-size);
-            font-family: var(--p-font);
-                
-            resize: none;
-            border: none;
-            outline: none;
-            background-color: var(--prim-input-col);
-            font-family: var(--para-font);
-
-            color: var(--text-light-col);
-            font-size: var(--p-font-size);
-            width: 100%;
-            border-radius: 10px;
-          }
-        .heading{
-            gap: 5px;
-            width:90%;
-            input{
-                height: 40px;
-                
-            }
-            
-            margin: 0px auto;
-            
-        }
-        
-        .desc{
-            width:90%;
-            margin: 0px auto;
-            gap:5px;
-            
-            
-
-        }
-
-        .buttons{
-            width: 100%;
-            gap: 10px;
-
-        }
-
+      &:hover {
+        color: rgb(255, 255, 255);
+      }
     }
+    label {
+      font-size: var(--h6-font-size);
+      font-family: var(--h1-font);
+      color: rgb(0, 0, 0);
+    }
+    input,
+    textarea {
+      padding: 15px;
+
+      resize: none;
+      outline: 0;
+      background-color: rgb(243, 243, 243);
+      font-family: var(--para-font);
+
+      color: var(--text-light-col);
+      font-size: var(--p-font-size);
+      width: 100%;
+      border-radius: 10px;
+      border: 1px solid rgb(255, 255, 255);
+      transition: all 0.2s ease-out;
+      &:focus {
+        border-color: rgb(127, 127, 255);
+      }
+    }
+    .heading {
+      gap: 5px;
+      width: 90%;
+      input {
+        height: 50px;
+      }
+
+      margin: 0px auto;
+    }
+
+    .desc {
+      width: 90%;
+      margin: 0px auto;
+      gap: 5px;
+    }
+
+    .buttons {
+      width: 100%;
+      gap: 10px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .addnote {
+    .content {
+      width: 90%;
+      gap: 12px;
+    }
+  }
+}
+@media (max-width: 480px) {
+  .addnote {
+    .content {
+      position: relative;
+      .top {
+        input[type="text"] {
+          width: 80%;
+        }
+      }
+    }
+  }
+}
+
+.Toastify__toast-icon {
+  overflow: hidden;
+}
+
+.Toastify__toast-container--top-center {
+  top: 1em !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
 }

@@ -1,21 +1,20 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import './App.css';
 import { Routes, Route } from 'react-router-dom'
 import RequireUser from './components/RequireUser';
 import NotLoggedIn from './components/NotLoggedIn';
 import Home from './pages/Home/Home';
-import { KEY_ACCESS_TOKEN, setItem } from './loacalStorageManager';
 import NotFound from './pages/NotFound/NotFound';
-import AddNote from './components/AddNote/AddNote';
 import Navbar from './components/navbar/Navbar.js';
 import Login from './pages/Login/Login';
 import Signup from './pages/Signup/Signup';
-import LoadingBar from 'react-top-loading-bar'
-import toast, { Toaster } from 'react-hot-toast';
 import { useSelector } from 'react-redux';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 export const TOAST_SUCCESS = 'toast_success';
 export const TOAST_FAILURE = 'toast_failure'
+export const TOAST_WARNING = 'toast_warning'
 
 
 
@@ -23,7 +22,7 @@ function App() {
   const isloading = useSelector(state => state.toastReducer.isLoading)
   const toastData = useSelector(state => state.toastReducer.toastData)
   const loadingRef = useRef(null);
-  
+
   useEffect(() => {
     if (isloading) {
       loadingRef.current?.continuousStart();
@@ -35,52 +34,68 @@ function App() {
 
   }, [isloading])
 
-  const [t,setT]=useState(true)
+  
   useEffect(() => {
-    if(t){
-      console.log("hi");
-    switch (toastData.type) {
+    
+    switch(toastData.type){
       case TOAST_SUCCESS:
-        toast.success(toastData.message)
-        
-    setT(false);
-
+        toast.success(toastData.message);
         break;
       case TOAST_FAILURE:
         toast.error(toastData.message)
-            setT(false);
-
+        break;
+      case TOAST_WARNING:
+        toast.warn(toastData.message)
         break;
 
-      default: 
+      default:
     }
-  }
-
+  
+    
+  
   }, [toastData])
+  
+  
 
-  setItem(KEY_ACCESS_TOKEN, "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDYzM2ZhZmVhYWIwYWJjNGYzZWZkOWUiLCJpYXQiOjE2ODQyMjU5NjksImV4cCI6MTY4NDMxMjM2OX0.Z46frM7p9ifNovuk77quk4wg1f6Ys6RPVYXjk3ZcR7E")
 
   return (<>
-  <div>
+    <div >
 
-      <Toaster />
-  </div>
+      {/* <Toaster /> */}
+      <ToastContainer role='alert'
+      style={{fontSize:"14px"}}
+      limit={1}
+      position="top-center"
+      autoClose={500}
+      hideProgressBar={true}
+      newestOnTop={false}
+      closeOnClick
+      closeButton={false}
+      rtl={false}
+      pauseOnFocusLoss={false}
+      draggable={false}
+      pauseOnHover={false}
+      theme="dark"
+     
+      />
+     
+      
 
+
+
+    </div>
   
-  <LoadingBar height={4} color="red" ref={loadingRef} />
     <Navbar />
     <Routes>
-      <Route path='/' element={<Home />} />
+        <Route path='/home' element={<Home />} />
       <Route element={<RequireUser />}>
-        <Route path='/note' element={<AddNote />} />
-
 
 
       </Route>
 
       <Route element={<NotLoggedIn />} >
-        <Route path='/login'  element={<Login/>}/>
-        <Route path='/signup'  element={<Signup/>}/>
+        <Route path='/login' element={<Login />} />
+        <Route path='/signup' element={<Signup />} />
 
       </Route>
 

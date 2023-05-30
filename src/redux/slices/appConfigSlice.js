@@ -2,19 +2,16 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { axiosClient } from "../../utils/axiosClient";
 
 
-export const fetchProfile= createAsyncThunk('/fetchProfile',async()=>{
+export const fetchProfile = createAsyncThunk('/fetchProfile', async () => {
     try {
-        const response =await axiosClient.get('/user/myprofile');
-        
-
-        console.log(response.message.curUser);
+        const response = await axiosClient.get('/user/myprofile');
         return response.message.curUser;
-        
+
     } catch (e) {
         return Promise.reject(e)
-        
+
     }
-   
+
 
 })
 
@@ -22,19 +19,19 @@ export const fetchProfile= createAsyncThunk('/fetchProfile',async()=>{
 
 
 const appConfigSlice = createSlice({
-    name:"appconfig",
-    initialState:{
-        myProfile:{},
-    
+    name: "appconfig",
+    initialState: {
+        myProfile: {},
+
     },
-    
-    extraReducers:(builder)=>{
+
+    extraReducers: (builder) => {
         builder
-        .addCase(fetchProfile.fulfilled,(state,action)=>{
-            state.myProfile= action.payload;
-        })
+            .addCase(fetchProfile.fulfilled, (state, action) => {
+                state.myProfile = action.payload;
+            })
     }
-    
+
 })
 
 export default appConfigSlice.reducer;

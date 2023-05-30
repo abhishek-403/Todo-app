@@ -1,16 +1,13 @@
 .note {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
   .content {
     margin: 0;
-    width: 350px;
 
-    border-radius: 10px;
-    background-color: rgb(217, 217, 255);
     .top {
       justify-content: space-between;
       align-items: center;
       border-radius: 10px;
-
-      background-color: rgb(108, 108, 255);
 
       padding: 10px 15px;
       position: relative;
@@ -28,41 +25,56 @@
 
           color: white;
         }
-       
       }
     }
     .mid {
       padding: 10px 15px;
-      background-color: rgb(217, 217, 255);
+      // background-color: hsl(240, 100%, 93%);
 
+      width: 350px;
       height: 220px;
+      width: 100%;
       .desc {
+        height: 100%;
+
         font-family: var(--h1-font);
         font-size: var(--p-font-size);
+        span {
+          display: block;
+          height: 100%;
+          width: 100%;
+          overflow-wrap: break-word;
+        }
       }
     }
 
     .bottom {
+      display: flex !important;
       padding: 10px 15px;
       margin: 0;
       align-items: center;
       justify-content: space-between;
       border-top: 1px solid var(--lighter-col);
-      .time-stamp{
+      .time-stamp {
         gap: 5px 0px;
-        p{
-            font-size: var(--smaller-font-size);
+        p {
+          font-size: var(--smaller-font-size);
         }
-
       }
-      .icons{
-
-          s {
-            cursor: pointer;
-            color: rgb(255, 0, 0);
-          }
+      .icons {
+        s {
+          cursor: pointer;
+          color: rgb(255, 0, 0);
+        }
       }
     }
+  }
+}
 
+@media (max-width: 480px) {
+  .note {
+    .content {
+      min-width: 350px;
+    }
   }
 }

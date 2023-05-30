@@ -5,6 +5,9 @@ import { fetchProfile } from '../../redux/slices/appConfigSlice'
 import { axiosClient } from '../../utils/axiosClient'
 import { useDispatch } from 'react-redux'
 import './addnote.scss'
+import { toast } from 'react-toastify'
+import { showToast } from '../../redux/slices/toastSlice'
+import { TOAST_SUCCESS } from '../../App'
 
 function EditNote(props) {
     const title = useRef(null)
@@ -22,22 +25,31 @@ function EditNote(props) {
     }
     useEffect(() => {
         load();
-    },[])
+    })
 
 
 
     async function handleEdit() {
         try {
 
-            await axiosClient.post('/note/update', {
-                subject: title.current.value,
-                taskId: props.noteId,
-                description: description.current.value
-            })
+            await toast.promise(
+                axiosClient.post('/note/update', {
+                    subject: title.current.value,
+                    taskId: props.noteId,
+                    description: description.current.value
+                }),
+                {
+                  pending: 'Editing Note',
+                  success: 'Note Edited 👌',
+                  
+                }
+                )
+            await 
+
+            props.handleEditPage(false)
 
 
         } catch (e) {
-            console.log(e);
 
         } finally {
             dispatch(fetchProfile())
@@ -50,12 +62,16 @@ function EditNote(props) {
     function resetForm() {
         title.current.value = "";
         description.current.value = "";
+        dispatch(showToast({
+            type: TOAST_SUCCESS,
+            message: "Reset done"
+          }))
     }
 
     return (
         <div className='addnote'>
 
-            <form onSubmit={(e) => e.preventDefault()} className="content">
+            <form onSubmit={(e) => e.preventDefault()} className="content flexcol">
                 <i onClick={() => props.handleEditPage(false)} id='cross' className="uil uil-times"></i>
 
 
@@ -67,13 +83,13 @@ function EditNote(props) {
                 </div>
                 <div className="desc flexcol">
                     <label htmlFor="description">Description</label>
-                    <textarea ref={description} name="" maxLength={600} rows="15" cols="" id="description" ></textarea>
+                    <textarea ref={description} name="" maxLength={600} rows="12" cols="" id="description" ></textarea>
 
                 </div>
                 <div className="buttons center">
                     <div onClick={handleEdit} className="add-btn">
 
-                        <AddNoteBtn />
+                        <AddNoteBtn name="Edit" />
                     </div>
                     <div onClick={resetForm} className="reset-btn">
                         <ResetNoteBtn />

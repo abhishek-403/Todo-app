@@ -1,13 +1,12 @@
 import React from 'react'
 import './avatar.scss'
-import img from '../../assets/profile.png'
 
-function Avartar() {
+function Avartar(props) {
 
   return (
     <div className='avatar'>
         <div className="image">
-            <img src={img} alt="" />
+            Hi, {props.name}
         </div>
       
     </div>

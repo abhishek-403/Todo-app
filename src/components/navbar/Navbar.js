@@ -1,42 +1,88 @@
 import React from 'react'
 import './navbar.scss'
 import Avartar from '../avatar/Avartar'
+import { KEY_ACCESS_TOKEN, getItem, removeItem } from '../../loacalStorageManager'
+import { useSelector } from 'react-redux';
+import LoginBtn from '../Btns/LoginBtn';
+import { useNavigate } from 'react-router-dom';
+import { confirmAlert } from 'react-confirm-alert';
+import 'react-confirm-alert/src/react-confirm-alert.css';
+import { axiosClient } from '../../utils/axiosClient';
 
 
 function Navbar() {
-  return (
-
-    <div className='navbar'>
-        <div className="container">
-            <div className="content flex">
-                <div className="left">
-                    <h2 className='head'>
-
-                     YourNotes
-                    </h2>
 
 
-                </div>
-                <div className="right center">
-                    <div className="avatar-img">
-                    <Avartar/>
+    const user = getItem(KEY_ACCESS_TOKEN);
+    const navigate = useNavigate();
 
-                    </div>
-                    <div className="login">
-                        <p>Login/Signup</p>
-                    </div>
-                    <div className="theme">
-                    <i className="uil uil-moonset"></i>
+    const profile = useSelector(s => s.appConfigReducer.myProfile)
 
-                    </div>
 
-                </div>
-            </div>
-        </div>
-
+    async function handlelogOut() {
       
-    </div>
-  )
-}
+            confirmAlert({
+                title: 'Do you want to logout.',
+                
+                buttons: [
+                    {
+                        label: 'Yes',
+                        onClick:async()=>{ await axiosClient.post('/auth/logout')
+                    
+                        removeItem(KEY_ACCESS_TOKEN);
+                        navigate('/home');
+                    }
+                    },
+                    {
+                        label: 'No',
+                    
+                    }
+                ]
+            });
+      
+    }
 
-export default Navbar
+
+
+        return (
+
+            <div className='navbar'>
+                <div className="container">
+                    <div className="content flex">
+                        <div className="left">
+                            <h2 className='head'>
+
+                                YourNotes
+                            </h2>
+
+
+                        </div>
+                        <div className="right center">
+                            {
+                                user ? <div className="avatar-img">
+                                    <Avartar name={profile.name} />
+                                </div> :
+                                    <div onClick={() => navigate('/login')} className="login">
+                                        <LoginBtn name="Login / Signup" color="var(--sec-col)" />
+                                    </div>
+
+                            }
+
+
+
+                            {
+                                user &&
+                                <i onClick={handlelogOut} className="uil uil-power"></i>
+                            }
+    
+
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        )
+    }
+
+    export default Navbar

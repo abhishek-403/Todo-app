@@ -11,16 +11,31 @@
     align-items: center;
     justify-content: space-between;
 
-    .left {
-    }
     .right {
-      gap: 20px;
+      font-family: var(--p-font);
+      i{
+        cursor: pointer;
+      }
+      gap: 10px;
 
-      .avatar-img {
-        width: 30px;
-      }
-      .theme {
-      }
     }
   }
+}
+
+
+
+.react-confirm-alert-body{
+  padding: 25px !important;
+  width: auto !important;
+  h1{
+
+    font-size: var(--h6-font-size);
+  }
+  button{
+    font-size: var(--small-font-size) !important;
+
+  }
+}
+.react-confirm-alert-overlay{
+  background:none !important;
 }

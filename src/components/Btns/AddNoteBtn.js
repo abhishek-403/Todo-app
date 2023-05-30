@@ -1,6 +1,6 @@
 import React from 'react'
 
-function AddNoteBtn() {
+function AddNoteBtn(props) {
     const style = {
         backgroundColor: `var(--sec-col)`,
         borderRadius: "30px",
@@ -13,7 +13,7 @@ function AddNoteBtn() {
 
 
             <div style={style} className="btn btn-add">
-                Add <i className="uil2 uil-check-circle"></i>
+                {props.name} <i className="uil2 uil-check-circle"></i>
             </div>
         </div>
     )

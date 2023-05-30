@@ -12,7 +12,7 @@
 :root {
   /* Heights */
 
-  --nav-ht: 4rem;
+  --nav-ht: 4.5rem;
 
   /* col */
 
@@ -20,7 +20,6 @@
 
   --sec-col: hsl(285, 100%, 50%);
   --danger-col: hsl(8, 100%, 50%);
-
 
   --prim-input-col: #f0eefc;
 
@@ -31,17 +30,14 @@
   --nav-col: white;
 
   --btn-prim-bg: hsl(41, 100%, 50%);
-  --btn-prim-bg-hover:  hsl(41, 99%, 47%);
+  --btn-prim-bg-hover: hsl(41, 99%, 47%);
   --btn-prim-bg-active: hsl(41, 96%, 55%);
-
-
 
   --light-col: hsl(0, 0%, 67%);
   --lighter-col: hsl(250, 47%, 93%);
 
   --shadow-col: hsl(0, 0%, 89%);
 
-  
   /* Fonts */
   --h1-font-size: 2.8rem;
   --h2-font-size: 2.5rem;
@@ -49,19 +45,19 @@
   --h6-font-size: 1.5rem;
   --p-font-size: 1.2rem;
   --small-font-size: 1.1rem;
-  --smaller-font-size:.8rem;
+  --smaller-font-size: 0.8rem;
 
-  --btn-font-size:1.2rem;
+  --btn-font-size: 1.2rem;
 
-  --uil-font-size:2rem;
-  --uil2-font-size:1.6rem;
+  --uil-font-size: 2rem;
+  --uil2-font-size: 1.6rem;
 
   /* Font family */
   --h1-font: "Roboto Slab", serif;
-  --h2-font: 'Playfair Display', serif;
+  --h2-font: "Playfair Display", serif;
   --allh-font: "Merriweather", serif;
   --p-font: "Domine", sans-serif;
-  --span-font:'Carter One', cursive;
+  --span-font: "Carter One", cursive;
 
   /* Margins */
 
@@ -80,7 +76,24 @@
   --headline-wd: 45vw;
 }
 
-body.dark-theme{
+@media (max-width: 480px) {
+  :root {
+    --h1-font-size: 2rem;
+    --h2-font-size: 1.9rem;
+    --h4-font-size: 2rem;
+    --h6-font-size: 1.5rem;
+    --p-font-size: 1.2rem;
+    --small-font-size: 0.9rem;
+    --smaller-font-size: 0.8rem;
+
+    --btn-font-size: 1.2rem;
+
+    --uil-font-size: 1.5rem;
+    --uil2-font-size: 1.5rem;
+  }
+}
+
+body.dark-theme {
   --prim-col: hsl(0, 0%, 100%);
 
   --black-col: rgb(255, 255, 255);
@@ -88,7 +101,7 @@ body.dark-theme{
 
   --body-col: hsl(250, 28%, 12%);
 
-  --nav-col:hsl(250, 28%, 19%);
+  --nav-col: hsl(250, 28%, 19%);
 
   --h1-col: rgb(255, 255, 255);
   --h2-col: rgb(245, 245, 245);
@@ -96,16 +109,15 @@ body.dark-theme{
   --h6-col: rgb(220, 220, 220);
   --p-col: rgb(255, 255, 255);
   --span-col: rgb(182, 182, 182);
-  --btn-prim-bg: hsl(250, 69%, 61%);;
-  --btn-prim-bg-hover:  hsl(250, 57%, 53%);
+  --btn-prim-bg: hsl(250, 69%, 61%);
+  --btn-prim-bg-hover: hsl(250, 57%, 53%);
   --btn-prim-bg-active: hsl(250, 100%, 72%);
 
   --light-col: hsl(250, 47%, 93%);
-  
-  --shadow-col: hsl(252, 17%, 34%);
 
+  --shadow-col: hsl(252, 17%, 34%);
 }
-body{
+body {
   background-color: var(--body-col);
 }
 h1 {
@@ -135,17 +147,13 @@ p {
   color: var(--p-col);
   font-family: var(--p-font);
 }
-span {
+/* span {
   font-size: var(--smaller-font-size);
   color: var(--span-col);
   font-family: var(--span-font);
-}
-
-
-
+} */
 
 /* btns */
-
 
 .btn {
   display: flex;
@@ -161,42 +169,44 @@ span {
   border-radius: 4px;
   font-family: var(--h1-font);
   font-size: var(--btn-font-size);
-  
 }
-.btn-create{
+.btn:hover {
+  opacity: 0.8;
+}
+.btn:active {
+  opacity: 0.9;
+}
+.btn-create {
+  opacity: 1;
   background-color: var(--btn-prim-bg);
   color: rgb(0, 0, 0);
 }
-.btn-create:hover{
+.btn-create:hover {
   background-color: var(--btn-prim-bg-hover);
-  
 }
-.btn-create:active{
+.btn-create:active {
   background-color: var(--btn-prim-bg-active);
-
 }
-
 
 /* uils */
 
-.uil,.fa{
-    font-size: var(--uil-font-size);
+.uil,
+.fa {
+  font-size: var(--uil-font-size);
 }
-.uil2,.fa2{
-    font-size: var(--uil2-font-size);
+.uil2,
+.fa2 {
+  font-size: var(--uil2-font-size);
 }
-
 
 /* elements */
-.flex{
-    display: flex;
+.flex {
+  display: flex;
 }
 
-.flexcol{
-    display: flex;
-    flex-direction: column;
-
-
+.flexcol {
+  display: flex;
+  flex-direction: column;
 }
 
 .center {
@@ -210,7 +220,6 @@ span {
   margin: 0px auto;
   padding: 0px 10px;
 }
-
 
 Link,
 a {

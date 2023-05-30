@@ -5,15 +5,36 @@ import CreateBtn from '../../components/Btns/CreateBtn'
 import AddNote from '../../components/AddNote/AddNote'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchProfile } from '../../redux/slices/appConfigSlice'
+import { KEY_ACCESS_TOKEN, getItem } from '../../loacalStorageManager'
+import { showToast } from '../../redux/slices/toastSlice'
+import { TOAST_WARNING } from '../../App'
 function Home() {
+    const [search, setSearch] = useState("");
 
     const [creatingNote, setCreatingNote] = useState(false)
-    const myData = useSelector(s => s.appConfigReducer.myProfile)
+    let myData = useSelector(s => s.appConfigReducer.myProfile).tasks
 
     const dispatch = useDispatch()
+
+
+    function handleCreate() {
+        const user = getItem(KEY_ACCESS_TOKEN);
+        if (!user) {
+            dispatch(showToast({
+                type: TOAST_WARNING,
+                message: "Login to create note"
+            }))
+            return;
+        }
+
+        setCreatingNote(true);
+
+    }
     useEffect(() => {
         dispatch(fetchProfile())
     }, [dispatch])
+    
+
 
 
     return (
@@ -25,19 +46,30 @@ function Home() {
                 <div className="content">
 
                     <div className="top center">
-                        <div onClick={() => setCreatingNote(true)} className="createbtn">
+                        <div onClick={handleCreate} className="createbtn">
 
                             <CreateBtn />
                         </div>
-                        <input placeholder='Search' type="text" />
+                        <input onChange={(e) => setSearch(e.target.value.toLowerCase())} placeholder='Search' type="text" />
                         <i className="uil2 uil-search btn"></i>
                     </div>
 
-                    <div className="bottom flex">
+                    <div className="bottom">
                         {
-                            myData?.tasks?.map((item, i) => {
-                                return <EachNote note={item} key={i} />
-                            })
+
+                            search === "" ?
+                                myData?.map((item, i) => {
+                                    return <EachNote note={item} key={i} />
+                                }) :
+                                myData?.filter((item) => {
+                                    if (item.subject.toLowerCase().includes(search) || item.description.toLowerCase().includes(search)) {
+                                        return item;
+                                    }
+                                    return null;
+
+                                }).map((item, i) => {
+                                    return <EachNote note={item} key={i} />
+                                })
                         }
                     </div>
 
