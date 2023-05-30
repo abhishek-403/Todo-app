@@ -1,5 +1,5 @@
 import React, { useRef } from 'react'
-import './login.scss'
+import './Login.scss'
 import LoginBtn from '../../components/Btns/LoginBtn'
 import { Link, useNavigate } from 'react-router-dom'
 import { axiosClient } from '../../utils/axiosClient';
