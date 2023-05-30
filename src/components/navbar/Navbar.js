@@ -30,7 +30,7 @@ function Navbar() {
                         onClick:async()=>{ await axiosClient.post('/auth/logout')
                     
                         removeItem(KEY_ACCESS_TOKEN);
-                        navigate('/home');
+                        navigate('/login');
                     }
                     },
                     {

@@ -41,7 +41,7 @@ function Signup() {
 
                 <form className="mid flexcol">
                     <div id="name">
-                        <input ref={name} autoComplete='off' placeholder='Name' type="text"
+                        <input maxLength={14} ref={name} autoComplete='off' placeholder='Name' type="text"
                             autoCapitalize='on' id='' />
 
                     </div>
