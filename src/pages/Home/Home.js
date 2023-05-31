@@ -33,20 +33,7 @@ function Home() {
     useEffect(() => {
         dispatch(fetchProfile())
     }, [dispatch])
-    // useEffect(()=>{
-    //     console.log(myData?.length);
-    //     console.log(myData);
-    //     if(myData?.length===1){
-    //         myData =[{
-    //             subject:"Welcome!",
-    //             description:"Hi, welcome to the best note app present on the blue planet. You can keep you notes safe and secure here till apocalypse!\nCreate your first note now!",
-    //             hslCol:240
-    //         }]
-    //         console.log("hi");
-    //     }
-
-    // })
-
+    
 
 
 
