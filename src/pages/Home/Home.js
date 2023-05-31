@@ -5,7 +5,7 @@ import CreateBtn from '../../components/Btns/CreateBtn'
 import AddNote from '../../components/AddNote/AddNote'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchProfile } from '../../redux/slices/appConfigSlice'
-import { KEY_ACCESS_TOKEN, getItem } from '../../loacalStorageManager'
+import { KEY_ACCESS_TOKEN, getItem } from '../../utils/loacalStorageManager'
 import { showToast } from '../../redux/slices/toastSlice'
 import { TOAST_WARNING } from '../../App'
 function Home() {
@@ -15,8 +15,8 @@ function Home() {
     let myData = useSelector(s => s.appConfigReducer.myProfile).tasks
 
     const dispatch = useDispatch()
-    
-    
+
+
     function handleCreate() {
         const user = getItem(KEY_ACCESS_TOKEN);
         if (!user) {
@@ -26,9 +26,9 @@ function Home() {
             }))
             return;
         }
-        
+
         setCreatingNote(true);
-        
+
     }
     useEffect(() => {
         dispatch(fetchProfile())
@@ -44,9 +44,9 @@ function Home() {
     //         }]
     //         console.log("hi");
     //     }
-        
+
     // })
-    
+
 
 
 

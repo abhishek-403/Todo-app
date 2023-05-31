@@ -3,7 +3,7 @@ import './signup.scss'
 import LoginBtn from '../../components/Btns/LoginBtn'
 import { Link, useNavigate } from 'react-router-dom'
 import { axiosClient } from "../../utils/axiosClient";
-import { KEY_ACCESS_TOKEN, setItem } from '../../loacalStorageManager';
+import { KEY_ACCESS_TOKEN, setItem } from '../../utils/loacalStorageManager';
 
 
 function Signup() {
@@ -12,21 +12,21 @@ function Signup() {
     const password = useRef(null);
     const navigate = useNavigate();
 
-    async function submitForm(){
-        const response=await axiosClient.post('/auth/signup',{
-            name:name.current.value,
-            email:email.current.value,
-            password:password.current.value
+    async function submitForm() {
+        const response = await axiosClient.post('/auth/signup', {
+            name: name.current.value,
+            email: email.current.value,
+            password: password.current.value
         })
-        
 
-        setItem(KEY_ACCESS_TOKEN,response.message.accessToken);
+
+        setItem(KEY_ACCESS_TOKEN, response.message.accessToken);
         navigate('/');
 
-        
 
 
-        
+
+
     }
 
 
@@ -47,12 +47,12 @@ function Signup() {
                     </div>
 
                     <div id="email">
-                        <input ref={email}  autoComplete='off' placeholder='E-mail' type="text" id='input-email' />
+                        <input ref={email} autoComplete='off' placeholder='E-mail' type="text" id='input-email' />
                     </div>
 
                     <div id="password">
-                     
-                        <input ref={password}  autoComplete='off' placeholder='Password' type="password" id='input-password' />
+
+                        <input ref={password} autoComplete='off' placeholder='Password' type="password" id='input-password' />
 
                     </div>
 

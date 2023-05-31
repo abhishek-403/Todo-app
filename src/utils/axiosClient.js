@@ -1,12 +1,18 @@
 import axios from 'axios'
-import { KEY_ACCESS_TOKEN, getItem, removeItem, setItem } from "../loacalStorageManager"
+import { KEY_ACCESS_TOKEN, getItem, removeItem, setItem } from "./loacalStorageManager"
 import { TOAST_FAILURE } from '../App'
 import store from '../redux/store'
 import { showToast } from '../redux/slices/toastSlice'
 
+let baseURL="http://localhost:4000/api"
+console.log(process.env.NODE_ENV);
+if(process.env.NODE_ENV ==='production'){
+    baseURL=process.env.REACT_APP_SERVER_BASE_URL
+
+}
 
 export const axiosClient = axios.create({
-    baseURL: process.env.REACT_APP_SERVER_BASE_URL,
+    baseURL,
     withCredentials: true
 
 })

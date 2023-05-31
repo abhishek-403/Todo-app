@@ -3,27 +3,27 @@ import './Login.scss'
 import LoginBtn from '../../components/Btns/LoginBtn'
 import { Link, useNavigate } from 'react-router-dom'
 import { axiosClient } from '../../utils/axiosClient';
-import { KEY_ACCESS_TOKEN, setItem } from '../../loacalStorageManager';
+import { KEY_ACCESS_TOKEN, setItem } from '../../utils/loacalStorageManager';
 
 function Login() {
-    
+
     const email = useRef(null);
     const password = useRef(null);
-    const navigate= useNavigate()
-    
-    async function submitLogin(){
+    const navigate = useNavigate()
+
+    async function submitLogin() {
         try {
-            
-            const response= await axiosClient.post('/auth/login',{
-                email:email.current.value,
-                password:password.current.value
+
+            const response = await axiosClient.post('/auth/login', {
+                email: email.current.value,
+                password: password.current.value
             });
-    
-            setItem(KEY_ACCESS_TOKEN,response.message.accessToken);
+
+            setItem(KEY_ACCESS_TOKEN, response.message.accessToken);
             navigate('/');
         } catch (e) {
-            
-            
+
+
         }
 
 
@@ -45,7 +45,7 @@ function Login() {
 
                     <div id="password">
                         <label htmlFor="input-password"></label>
-                        <input  ref={password} autoComplete='off' placeholder='Password' type="password" id='input-password' />
+                        <input ref={password} autoComplete='off' placeholder='Password' type="password" id='input-password' />
 
 
 
