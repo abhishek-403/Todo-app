@@ -53,7 +53,7 @@ function Navbar() {
                     <div className="left">
                         <h2 onClick={() => navigate('/')} className='head'>
 
-                            YourNotes
+                            {process.env.REACT_APP_NAME}
                         </h2>
 
 
