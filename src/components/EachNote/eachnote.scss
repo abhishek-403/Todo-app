@@ -2,6 +2,7 @@
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   border-radius: 10px;
   .content {
+    min-height: 100%;
     margin: 0;
 
     .top {
@@ -29,8 +30,8 @@
     }
     .mid {
       padding: 10px 15px;
+      width: 330px;
 
-      width: 350px;
       height: 220px;
       width: 100%;
       .desc {
@@ -54,6 +55,7 @@
       align-items: center;
       justify-content: space-between;
       border-top: 1px solid var(--lighter-col);
+      margin-top: auto;
       .time-stamp {
         gap: 5px 0px;
         p {
@@ -80,7 +82,9 @@
 @media (max-width: 480px) {
   .note {
     .content {
-      min-width: 350px;
+      min-width: 315px;
+      max-width: 350px;
+      
     }
   }
 }

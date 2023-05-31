@@ -12,6 +12,7 @@
     justify-content: space-between;
     .left{
       cursor: pointer;
+      user-select: none;
     }
 
     .right {
@@ -40,5 +41,6 @@
   }
 }
 .react-confirm-alert-overlay{
-  background:none !important;
+  background:rgba(0, 0, 0, 0.305) !important;
+  animation: react-confirm-alert-fadeIn 0.05s 0.05s forwards !important;
 }

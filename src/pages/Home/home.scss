@@ -5,6 +5,8 @@
 
   background: linear-gradient(110deg, #a50af311 40%, rgba(0, 0, 0, 0) 30%),
     radial-gradient(farthest-corner at 0% 0%, #7a00cc16 70%, #bf3fff21 70%);
+  background:-webkit-linear-gradient(110deg, #a50af311 40%, rgba(0, 0, 0, 0) 30%),
+    radial-gradient(farthest-corner at 0% 0%, #7a00cc16 70%, #bf3fff21 70%);
 
     .content {
       margin-top: var(--mt2);
@@ -55,12 +57,12 @@
     .bottom {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
-      grid-auto-flow: dense;
 
       padding: 20px 0px;
       margin-top: var(--mt2);
       gap: 30px;
       justify-content: center;
+      padding-bottom: 60px;
     }
   }
 }
@@ -106,11 +108,18 @@
 }
 
 .Toastify__toast-container {
+  text-align: center;
   width: auto !important;
+  min-width: 200px !important;
   height: auto !important;
   overflow: hidden !important;
+  border-radius: 8px;
 }
 .Toastify__toast {
   height: auto !important;
   min-height: 0px !important;
+}
+.Toastify__toast-body{
+  
+  padding: 2px !important;
 }

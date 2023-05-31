@@ -83,8 +83,8 @@ function EachNote({ note }) {
 
                 <div className="bottom flex">
                     <div className="time-stamp flexcol">
-                        <p>Created on : {note.createdAt.slice(0, 10)}</p>
-                        <p>Last modified : {note.updatedAt.slice(0, 10)}</p>
+                        <p>Created on : {note.createdAt?.slice(0, 10)}</p>
+                        <p>Last modified : {note.updatedAt?.slice(0, 10)}</p>
 
                     </div>
                     <div className="icons">

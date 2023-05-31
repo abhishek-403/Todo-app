@@ -77,13 +77,13 @@ function EditNote(props) {
 
                 <div className="heading flexcol">
                     <label htmlFor="title">Title</label>
-                    <input ref={title} id='title' type="text" />
+                    <input maxLength={14} ref={title} id='title' type="text" />
 
 
                 </div>
                 <div className="desc flexcol">
                     <label htmlFor="description">Description</label>
-                    <textarea ref={description} name="" maxLength={600} rows="12" cols="" id="description" ></textarea>
+                    <textarea ref={description} name="" maxLength={550} rows="12" cols="" id="description" ></textarea>
 
                 </div>
                 <div className="buttons center">

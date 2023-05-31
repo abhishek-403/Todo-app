@@ -178,6 +178,7 @@ p {
   border-radius: 4px;
   font-family: var(--h1-font);
   font-size: var(--btn-font-size);
+  user-select: none;
 }
 .btn:hover {
   opacity: 0.8;

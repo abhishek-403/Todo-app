@@ -10,8 +10,13 @@
   .content {
     border-radius: 20px;
     margin: var(--mt2) auto;
-    background-image: linear-gradient(
-      to right in oklch,
+    background:linear-gradient(
+      to right,
+      rgb(255, 194, 241),
+      rgb(165, 183, 255)
+    );
+    background:-webkit-linear-gradient(
+      to right,
       rgb(255, 194, 241),
       rgb(165, 183, 255)
     );
