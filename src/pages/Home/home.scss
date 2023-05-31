@@ -25,8 +25,8 @@
         width: 40%;
 
         border-radius: 30px;
-        border-end-end-radius: 0px;
-        border-start-end-radius: 0px;
+        border-top-right-radius: 0px;
+        border-bottom-right-radius: 0px;
 
         transition: all 0.2s ease-in;
         outline: none;
@@ -45,8 +45,8 @@
         border-left: 0px;
         border: 1px solid var(--light-col);
         border-radius: 30px;
-        border-end-start-radius: 0px;
-        border-start-start-radius: 0px;
+        border-top-left-radius: 0px;
+        border-bottom-left-radius: 0px;
 
         padding: 4px 8px;
         height: 40px;
