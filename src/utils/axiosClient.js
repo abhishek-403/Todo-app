@@ -5,7 +5,6 @@ import store from '../redux/store'
 import { showToast } from '../redux/slices/toastSlice'
 
 let baseURL="http://localhost:4000/api"
-console.log(process.env.NODE_ENV);
 if(process.env.NODE_ENV ==='production'){
     baseURL=process.env.REACT_APP_SERVER_BASE_URL
 
