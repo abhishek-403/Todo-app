@@ -21,7 +21,7 @@ function Signup() {
         
 
         setItem(KEY_ACCESS_TOKEN,response.message.accessToken);
-        navigate('/home');
+        navigate('/');
 
         
 
@@ -41,7 +41,7 @@ function Signup() {
 
                 <form className="mid flexcol">
                     <div id="name">
-                        <input maxLength={14} ref={name} autoComplete='off' placeholder='Name' type="text"
+                        <input autoFocus maxLength={14} ref={name} autoComplete='off' placeholder='Name' type="text"
                             autoCapitalize='on' id='' />
 
                     </div>

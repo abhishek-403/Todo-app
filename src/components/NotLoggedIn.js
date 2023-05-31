@@ -5,7 +5,7 @@ import { Navigate, Outlet } from 'react-router-dom'
 function NotLoggedIn() {
     const user = getItem(KEY_ACCESS_TOKEN)
   return (
-    user? <Navigate to='/home'/>:<Outlet/>
+    user? <Navigate to='/'/>:<Outlet/>
   )
 }
 

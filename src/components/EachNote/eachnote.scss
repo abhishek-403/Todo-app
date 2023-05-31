@@ -62,9 +62,16 @@
         }
       }
       .icons {
+        overflow: hidden;
         s {
+          border-radius: 30px;
+          padding: 2px;
           cursor: pointer;
           color: rgb(255, 0, 0);
+
+          &:hover{
+            background-color: rgba(193, 193, 193, 0.552);
+          }
         }
       }
     }

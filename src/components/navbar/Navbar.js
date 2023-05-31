@@ -50,7 +50,7 @@ function Navbar() {
                 <div className="container">
                     <div className="content flex">
                         <div className="left">
-                            <h2 className='head'>
+                            <h2 onClick={()=>navigate('/')} className='head'>
 
                                 YourNotes
                             </h2>

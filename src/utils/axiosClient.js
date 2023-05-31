@@ -16,7 +16,7 @@ axiosClient.interceptors.request.use(
     (request) => {
         const accessToken = getItem(KEY_ACCESS_TOKEN);
         request.headers['Authorization'] = `Bearer ${accessToken}`;
-    
+
         return request;
     }
 
@@ -29,21 +29,23 @@ axiosClient.interceptors.response.use(
             return data;
         }
 
-        const originalRequest = response.config;
-        const statusCode = response.statusCode;
+        const originalRequest = data.config;
+        const statusCode = data.statusCode;
         const error = data.message;
-        
-        store.dispatch(showToast({
-            type: TOAST_FAILURE,
-            message: error
-        }))
+        if (!(statusCode === 401)) {
+
+            store.dispatch(showToast({
+                type: TOAST_FAILURE,
+                message: error
+            }))
+        }
 
 
 
         if (statusCode === 401) {
             const response = await axios.create({
                 withCredentials: true
-            }).get(`${process.env.REACT_APP_SERVER_BASE_URL}/auth/refresh`)
+            }).post(`${process.env.REACT_APP_SERVER_BASE_URL}/auth/refresh`)
 
 
 
@@ -65,11 +67,12 @@ axiosClient.interceptors.response.use(
         }
         return Promise.reject(error)
     }, async (e) => {
+
         store.dispatch(showToast({
-            type:TOAST_FAILURE,
-            message:e.message
+            type: TOAST_FAILURE,
+            message: e.message
         }))
-        
+
 
         return Promise.reject(e);
     }

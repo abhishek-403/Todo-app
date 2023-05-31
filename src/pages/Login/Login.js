@@ -20,7 +20,7 @@ function Login() {
             });
     
             setItem(KEY_ACCESS_TOKEN,response.message.accessToken);
-            navigate('/home');
+            navigate('/');
         } catch (e) {
             
             
@@ -40,7 +40,7 @@ function Login() {
                 <form className="mid flexcol">
                     <div id="email">
 
-                        <input ref={email} autoComplete='off' placeholder='E-mail' type="text" id='input-email' />
+                        <input autoFocus ref={email} autoComplete='off' placeholder='E-mail' type="text" id='input-email' />
                     </div>
 
                     <div id="password">
