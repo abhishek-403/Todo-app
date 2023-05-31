@@ -15,7 +15,7 @@ export const fetchProfile = createAsyncThunk('/fetchProfile', async () => {
                 subject: "Welcome!",
                 description: "Hi, welcome to the YourNotes, an app to organize your thoughts, tasks and ideas with user-friendly interface and real-time syncing.\nCreate your first note now!(This note will automatically delete after you create your first note.)",
                 createdAt: "2023-05-31",
-                modifiedAt: "2023-05-31"
+                updatedAt: "2023-05-31"
             }]
 
         })
@@ -45,7 +45,7 @@ const appConfigSlice = createSlice({
                         subject: "Welcome!",
                         description: "Hi, welcome to the YourNotes, an app to organize your thoughts, tasks and ideas with user-friendly interface and real-time syncing.\nCreate your first note now!(This note will automatically delete after you create your first note.)",
                         createdAt: "2023-05-31",
-                        modifiedAt: "2023-05-31"
+                        updatedAt: "2023-05-31"
 
                     })
                 }

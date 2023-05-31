@@ -37,7 +37,7 @@ function Login() {
 
                 </div>
 
-                <form className="mid flexcol">
+                <form onKeyUp={e=>e.key==="Enter"?submitLogin():null} className="mid flexcol">
                     <div id="email">
 
                         <input autoFocus ref={email} autoComplete='off' placeholder='E-mail' type="text" id='input-email' />

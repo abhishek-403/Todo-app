@@ -39,7 +39,7 @@ function Signup() {
 
                 </div>
 
-                <form className="mid flexcol">
+                <form onKeyUp={e=>e.key==="Enter"?submitForm():undefined} className="mid flexcol">
                     <div id="name">
                         <input autoFocus maxLength={14} ref={name} autoComplete='off' placeholder='Name' type="text"
                             autoCapitalize='on' id='' />

@@ -8,6 +8,7 @@
   width: 100vw;
 
   .content {
+    min-height: auto;
     border-radius: 20px;
     margin: var(--mt2) auto;
     background:linear-gradient(
@@ -26,6 +27,7 @@
     padding: 20px 10px;
 
     gap: 25px;
+    height: fit-content;
 
     #cross {
       color: rgb(0, 0, 0);
@@ -97,6 +99,7 @@
   .addnote {
     .content {
       position: relative;
+      width: 95%;
       .top {
         input[type="text"] {
           width: 80%;
