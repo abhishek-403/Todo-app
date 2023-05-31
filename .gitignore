@@ -3,6 +3,11 @@
 # dependencies
 /node_modules
 /.env
+/.env.dev
+/.env.prod
+
+
+
 /.pnp
 .pnp.js
 

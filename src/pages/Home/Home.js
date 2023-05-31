@@ -15,8 +15,8 @@ function Home() {
     let myData = useSelector(s => s.appConfigReducer.myProfile).tasks
 
     const dispatch = useDispatch()
-
-
+    
+    
     function handleCreate() {
         const user = getItem(KEY_ACCESS_TOKEN);
         if (!user) {
@@ -26,13 +26,26 @@ function Home() {
             }))
             return;
         }
-
+        
         setCreatingNote(true);
-
+        
     }
     useEffect(() => {
         dispatch(fetchProfile())
     }, [dispatch])
+    // useEffect(()=>{
+    //     console.log(myData?.length);
+    //     console.log(myData);
+    //     if(myData?.length===1){
+    //         myData =[{
+    //             subject:"Welcome!",
+    //             description:"Hi, welcome to the best note app present on the blue planet. You can keep you notes safe and secure here till apocalypse!\nCreate your first note now!",
+    //             hslCol:240
+    //         }]
+    //         console.log("hi");
+    //     }
+        
+    // })
     
 
 

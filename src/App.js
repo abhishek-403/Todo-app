@@ -55,13 +55,9 @@ function App() {
   
   }, [toastData])
   
-  
-
-
   return (<>
     <div >
 
-      {/* <Toaster /> */}
       <ToastContainer role='alert'
       style={{fontSize:"14px"}}
       limit={1}
