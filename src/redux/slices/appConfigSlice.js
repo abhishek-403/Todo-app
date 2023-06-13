@@ -2,8 +2,11 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { axiosClient } from "../../utils/axiosClient";
 
 
-export const fetchProfile = createAsyncThunk('/fetchProfile', async () => {
+export const fetchProfile = createAsyncThunk('/fetchProfile', async (_,thunkAPI) => {
     try {
+        thunkAPI.dispatch(setSpinner(true));
+        
+        
         const response = await axiosClient.get('/user/myprofile');
         return response.message.curUser;
 
@@ -17,12 +20,16 @@ export const fetchProfile = createAsyncThunk('/fetchProfile', async () => {
                 createdAt: "2023-05-31",
                 updatedAt: "2023-05-31"
             }]
-
+            
         })
+        
+    }
+    finally{
+        thunkAPI.dispatch(setSpinner(false));
 
     }
-
-
+    
+    
 })
 
 
@@ -32,9 +39,15 @@ const appConfigSlice = createSlice({
     name: "appconfig",
     initialState: {
         myProfile: {},
+        isSpinning:false
 
     },
+    reducers:{
+        setSpinner:(state,action)=>{
+            state.isSpinning = action.payload
 
+        }
+    },
     extraReducers: (builder) => {
         builder
             .addCase(fetchProfile.fulfilled, (state, action) => {
@@ -56,3 +69,4 @@ const appConfigSlice = createSlice({
 })
 
 export default appConfigSlice.reducer;
+export const {setSpinner} = appConfigSlice.actions

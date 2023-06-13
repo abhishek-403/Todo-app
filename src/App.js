@@ -8,10 +8,12 @@ import NotFound from './pages/NotFound/NotFound';
 import Navbar from './components/navbar/Navbar.js';
 import Login from './pages/Login/Login';
 import Signup from './pages/Signup/Signup';
-import { useSelector } from 'react-redux';
+import Loading from './components/Loading/Loading';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { fetchProfile } from './redux/slices/appConfigSlice';
 export const TOAST_SUCCESS = 'toast_success';
 export const TOAST_FAILURE = 'toast_failure'
 export const TOAST_WARNING = 'toast_warning'
@@ -22,6 +24,8 @@ function App() {
   const isloading = useSelector(state => state.toastReducer.isLoading)
   const toastData = useSelector(state => state.toastReducer.toastData)
   const loadingRef = useRef(null);
+  const dispatch = useDispatch();
+  const isSpinning = useSelector(s => s.appConfigReducer.isSpinning)
 
   useEffect(() => {
     if (isloading) {
@@ -34,10 +38,10 @@ function App() {
 
   }, [isloading])
 
-  
+
   useEffect(() => {
-    
-    switch(toastData.type){
+
+    switch (toastData.type) {
       case TOAST_SUCCESS:
         toast.success(toastData.message);
         break;
@@ -50,40 +54,49 @@ function App() {
 
       default:
     }
-  
-    
-  
+
+
   }, [toastData])
-  
+
+
+
+
+  useEffect(() => {
+    dispatch(fetchProfile())
+  }, [dispatch])
+
+
+
   return (<>
     <div >
 
       <ToastContainer role='alert'
-      style={{fontSize:"14px"}}
-      limit={1}
-      position="top-center"
-      autoClose={500}
-      hideProgressBar={true}
-      newestOnTop={false}
-      closeOnClick
-      closeButton={false}
-      rtl={false}
-      pauseOnFocusLoss={false}
-      draggable={false}
-      pauseOnHover={false}
-      theme="dark"
-     
+        style={{ fontSize: "14px" }}
+        limit={1}
+        position="top-center"
+        autoClose={500}
+        hideProgressBar={true}
+        newestOnTop={false}
+        closeOnClick
+        closeButton={false}
+        rtl={false}
+        pauseOnFocusLoss={false}
+        draggable={false}
+        pauseOnHover={false}
+        theme="dark"
+
       />
-     
-      
+
+
 
 
 
     </div>
-  
+    {isSpinning && <Loading />}
+
     <Navbar />
     <Routes>
-        <Route path='/' element={<Home />} />
+      <Route path='/' element={<Home />} />
       <Route element={<RequireUser />}>
 
 

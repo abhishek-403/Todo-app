@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, {useState } from 'react'
 import './home.scss'
 import EachNote from '../../components/EachNote/EachNote'
 import CreateBtn from '../../components/Btns/CreateBtn'
 import AddNote from '../../components/AddNote/AddNote'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchProfile } from '../../redux/slices/appConfigSlice'
 import { KEY_ACCESS_TOKEN, getItem } from '../../utils/loacalStorageManager'
 import { showToast } from '../../redux/slices/toastSlice'
 import { TOAST_WARNING } from '../../App'
@@ -30,12 +29,6 @@ function Home() {
         setCreatingNote(true);
 
     }
-    useEffect(() => {
-        dispatch(fetchProfile())
-    }, [dispatch])
-    
-
-
 
     return (
 
