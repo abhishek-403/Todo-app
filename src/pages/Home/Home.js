@@ -1,4 +1,4 @@
-import React, {useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './home.scss'
 import EachNote from '../../components/EachNote/EachNote'
 import CreateBtn from '../../components/Btns/CreateBtn'
@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { KEY_ACCESS_TOKEN, getItem } from '../../utils/loacalStorageManager'
 import { showToast } from '../../redux/slices/toastSlice'
 import { TOAST_WARNING } from '../../App'
+import { fetchProfile } from '../../redux/slices/appConfigSlice'
 function Home() {
     const [search, setSearch] = useState("");
 
@@ -29,6 +30,11 @@ function Home() {
         setCreatingNote(true);
 
     }
+
+    useEffect(() => {
+        dispatch(fetchProfile())
+    }, [dispatch])
+
 
     return (
 

@@ -13,7 +13,6 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { fetchProfile } from './redux/slices/appConfigSlice';
 export const TOAST_SUCCESS = 'toast_success';
 export const TOAST_FAILURE = 'toast_failure'
 export const TOAST_WARNING = 'toast_warning'
@@ -24,7 +23,6 @@ function App() {
   const isloading = useSelector(state => state.toastReducer.isLoading)
   const toastData = useSelector(state => state.toastReducer.toastData)
   const loadingRef = useRef(null);
-  const dispatch = useDispatch();
   const isSpinning = useSelector(s => s.appConfigReducer.isSpinning)
 
   useEffect(() => {
@@ -61,11 +59,7 @@ function App() {
 
 
 
-  useEffect(() => {
-    dispatch(fetchProfile())
-  }, [dispatch])
-
-
+ 
 
   return (<>
     <div >
