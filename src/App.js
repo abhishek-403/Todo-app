@@ -9,7 +9,7 @@ import Navbar from './components/navbar/Navbar.js';
 import Login from './pages/Login/Login';
 import Signup from './pages/Signup/Signup';
 import Loading from './components/Loading/Loading';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
