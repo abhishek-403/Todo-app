@@ -44,6 +44,10 @@ function App() {
         toast.success(toastData.message);
         break;
       case TOAST_FAILURE:
+        if(toastData.message ==="Invalid access token"){
+          return;
+
+        }
         toast.error(toastData.message)
         break;
       case TOAST_WARNING:

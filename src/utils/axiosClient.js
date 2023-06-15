@@ -59,6 +59,7 @@ axiosClient.interceptors.response.use(
 
 
                 originalRequest.headers['Authorization'] = `Bearer ${response.data.message.accessToken}`;
+                window.location.reload();
                 return axios(originalRequest);
             }
 
